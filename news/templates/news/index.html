@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<h1>{{title}}</h1>
+
+{% for item in news %}
+    <div>
+        <p><h2><span style="text-decoration: underline;">{{ item.title }}</span></h2></p>
+
+        <p>{{ 'Автор: ' }} {{ item.author }}</p>
+        <p>{{ item.time_in|date:'Y-m-d H:m:s'  }}</p>     <!--        Добавил "автор" для наглядности-->
+        <p>{{ item.preview }}</p>
+        <a href="{{ item.get_absolute_url }}"><em>Подробнее</em></a>
+    </div>
+    <hr>
+{% endfor %}
+
+
+</body>
+</html>
