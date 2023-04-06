@@ -9,7 +9,7 @@
 
     <div>
         <p>{{ post_item.time_in|date:'Y-m-d H:m:s'  }}</p>
-        <p>{{ post_item.censor  }}</p>
+        <p>{{ post_item.text_censor  }}</p>
         <p>{{ 'Рейтинг: ' }}{{ post_item.vote }}</p>
         <p>{{ 'Автор: ' }} {{ post_item.author  }}</p>      <!--        Добавил "автор" для наглядности-->
     </div>

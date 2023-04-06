@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from news.templates.templatetags.check_words import censor
 
 User = get_user_model()
 
@@ -63,6 +64,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def text_censor(self):
+        self.text = censor(self)
+        return self.text
+
     def like(self):
         self.vote += 1
         self.save()
@@ -76,16 +81,8 @@ class Post(models.Model):
     def get_summary_comments_rating(self):
         return sum([comment.rate for comment in self.comment_set.all()])
 
-    def censor(self):
-        if not isinstance(self.text, str):
-            raise ValueError('Можно применить только к строке!')  # Если строка, то в ней уже ищем плохие слова
-        if 'редиск' or 'баран' in self.text:
-            self.text = self.text.replace('редиск', 'р******')
-            self.text = self.text.replace('баран', 'б****')
-            return f'{self.text}'
-
     def preview(self):
-        self.text = Post.censor(self)
+        self.text = censor(self)
         return f'{self.text[:20]}...'
 
 
