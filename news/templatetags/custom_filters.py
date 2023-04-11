@@ -1,7 +1,6 @@
 from news.models import Post
 from django import template
 
-
 register = template.Library()
 
 
