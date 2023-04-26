@@ -3,17 +3,17 @@
 {% load custom_filters %}
 
 {% block title %}
-    <title>{{ post_item.title }}</title>
+    <title>{{ post.title }}</title>
 {% endblock %}
 
 {% block content %}
-<h1>{{ post_item.title|censor }}</h1>
+<h1>{{ post.title|censor }}</h1>
 
     <div>
-        <p>{{ post_item.time_in|date:'Y-m-d H:m:s' }}</p>
-        <p>{{ post_item.text|censor }}</p>
-        <p>{{ 'Рейтинг: ' }}{{ post_item.vote }}</p>
-        <p>{{ 'Автор: ' }} {{ post_item.author }}</p>      <!--        Добавил "автор" для наглядности-->
+        <p>{{ post.time_in|date:'Y-m-d H:m:s' }}</p>
+        <p>{{ post.text|censor }}</p>
+        <p>{{ 'Рейтинг: ' }}{{ post.vote }}</p>
+        <p>{{ 'Автор: ' }} {{ post.author }}</p>      <!--        Добавил "автор" для наглядности-->
     </div>
     <hr>
 {% endblock %}

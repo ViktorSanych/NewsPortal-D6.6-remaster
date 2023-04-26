@@ -3,5 +3,6 @@ from .views import PostView, ViewPost
 
 urlpatterns = [
     path('', PostView.as_view(), name='post_view'),
-    path('<int:pk>/', ViewPost.as_view(), name='view_post'),   # было 'news/<int:pk>/', но так в адресе
-    ]                                                                # получается news/news/, не красиво
+    path('page/<int:page_number>', PostView.as_view(), name='paginator'),
+    path('news/<int:pk>/', ViewPost.as_view(), name='view_post'),
+    ]
